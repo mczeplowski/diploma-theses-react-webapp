@@ -1,0 +1,10 @@
+.container {
+    flex: 1;
+    background: #3d3d3d;
+    color: #0080FF;
+    transition: box-shadow .5s;
+
+    &:hover {
+        box-shadow: 0 0 2rem #3d3d3d;
+    }
+}
