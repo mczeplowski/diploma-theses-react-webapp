@@ -4,10 +4,10 @@ import styles from './Dropdown.module.scss';
 export default function DropdownComponent({ items, noValueLabel, setValue, value }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const dropdownLabel = value ? value.label : noValueLabel;
-    const dropdownContentItems = items.filter(item => value ? item.id !== value.id : true);
-    const handleItemClick = item => {
-        setValue(item);
+    const getLabel = v => items.find(item => item.id === v);
+    const dropdownLabel = value ? getLabel(value).label : noValueLabel;
+    const handleItemClick = value => {
+        setValue(value);
         setIsOpen(false);
     };
 
@@ -22,11 +22,11 @@ export default function DropdownComponent({ items, noValueLabel, setValue, value
             </button>
             {isOpen && (
                 <div className={styles.content}>
-                    {dropdownContentItems
+                    {items
                         .map(item => (
                             <button
                                 key={item.id}
-                                onClick={() => handleItemClick(item)}
+                                onClick={() => handleItemClick(item.id)}
                             >
                                 {item.label}
                             </button>

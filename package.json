@@ -4,12 +4,15 @@
   "private": true,
   "dependencies": {
     "debounce": "^1.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.2.0",
+    "redux": "^4.0.4",
+    "redux-starter-kit": "^1.0.0",
     "source-map-explorer": "^2.1.0"
   },
   "scripts": {
