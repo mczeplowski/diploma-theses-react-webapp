@@ -1,4 +1,4 @@
 import HomePage from './HomePageComponent';
 
-export { controlsReducer } from './components/Controls';
+export { controlsReducer, thesesEpic, thesesReducer } from './state';
 export default HomePage;

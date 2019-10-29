@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy, sortBySelector } from '../../state';
+import { setSortBy, sortBySelector } from '../../../../state';
 import Dropdown from '../../../../../../common/components/Dropdown';
 
 const sortByList = [
@@ -18,7 +18,7 @@ const sortByList = [
 export default function SortingDropdownComponent() {
     const sortBy = useSelector(sortBySelector);
     const dispatch = useDispatch();
-    const handleSetSortBy = v => dispatch(setSortBy(v));
+    const handleSetSortBy = useCallback(v => dispatch(setSortBy(v)), [dispatch]);
 
     return (
         <Dropdown

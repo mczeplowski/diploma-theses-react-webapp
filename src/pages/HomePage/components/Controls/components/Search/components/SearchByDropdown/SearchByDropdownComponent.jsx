@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchBy, searchBySelector } from '../../../../state';
+import { setSearchBy, searchBySelector } from '../../../../../../state';
 import Dropdown from '../../../../../../../../common/components/Dropdown';
 
 const searchByList = [
@@ -18,7 +18,7 @@ const searchByList = [
 export default function SearchByDropdownComponent() {
     const searchBy = useSelector(searchBySelector);
     const dispatch = useDispatch();
-    const handleSetSearchBy = v => dispatch(setSearchBy(v));
+    const handleSetSearchBy = useCallback(v => dispatch(setSearchBy(v)), [dispatch]);
 
     return (
         <Dropdown

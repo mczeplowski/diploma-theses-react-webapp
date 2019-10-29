@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchPhrase, searchPhraseSelector } from '../../../../state';
+import { setSearchPhrase, searchPhraseSelector } from '../../../../../../state';
 import styles from './Input.module.scss';
 
 

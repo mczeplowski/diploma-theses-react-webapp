@@ -1,14 +1,24 @@
 import React from "react";
 import { Provider } from 'react-redux';
-import { configureStore, combineReducers } from 'redux-starter-kit';
+import { configureStore, combineReducers, getDefaultMiddleware } from 'redux-starter-kit';
+import { createEpicMiddleware } from 'redux-observable';
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./core/components/Header";
-import HomePage, { controlsReducer } from "./pages/HomePage";
+import HomePage, { controlsReducer, thesesEpic, thesesReducer } from "./pages/HomePage";
 
 const reducer = combineReducers({
-  controls: controlsReducer
+  controls: controlsReducer,
+  theses: thesesReducer,
 });
-const store = configureStore({ reducer });
+
+const epicMiddleware = createEpicMiddleware();
+
+const store = configureStore({
+  reducer,
+  middleware: [...getDefaultMiddleware(), epicMiddleware]
+});
+
+epicMiddleware.run(thesesEpic);
 
 function App() {
   return (
