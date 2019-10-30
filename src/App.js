@@ -4,11 +4,12 @@ import { configureStore, combineReducers, getDefaultMiddleware } from 'redux-sta
 import { createEpicMiddleware } from 'redux-observable';
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./core/components/Header";
-import HomePage, { controlsReducer, thesesEpic, thesesReducer } from "./pages/HomePage";
+import HomePage, { controlsReducer, thesesEpic, thesesReducer, paginationReducer } from "./pages/HomePage";
 
 const reducer = combineReducers({
   controls: controlsReducer,
   theses: thesesReducer,
+  pagination: paginationReducer,
 });
 
 const epicMiddleware = createEpicMiddleware();

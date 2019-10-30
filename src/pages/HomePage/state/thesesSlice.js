@@ -1,12 +1,12 @@
 import { createSlice } from 'redux-starter-kit';
 
 const name = 'theses';
-const controlsSlice = createSlice({
+const thesesSlice = createSlice({
     name,
     initialState: {
         isLoading: false,
         list: [],
-        pagination: null,
+        pagination: {},
     },
     reducers: {
         fetchThesesRequested: (state) => {
@@ -26,11 +26,12 @@ const controlsSlice = createSlice({
 export const {
     actions: { fetchThesesRequested, fetchThesesSuccess, fetchThesesFail },
     reducer: thesesReducer,
-} = controlsSlice;
+} = thesesSlice;
 
 export const isLoadingSelector = state => state[name].isLoading;
 export const listSelector = state => state[name].list;
 export const paginationSelector = state => state[name].pagination;
+export const paginationPagesSelector = state => state[name].pagination.pages;
 
 const getUrl = (queryStringsObject) => {
     let url = 'http://localhost:3001/theses?';
@@ -49,9 +50,16 @@ const getUrl = (queryStringsObject) => {
 
 export const fetchTheses = () => (dispatch, getState) => {
     dispatch(fetchThesesRequested());
-    const { controls } = getState();
+    const { controls, pagination } = getState();
+    const { page, limit } = pagination;
 
-    const url = getUrl({ ...controls });
+    const queryStrings = {
+        ...controls,
+        limit,
+        page: page - 1,
+    }
+
+    const url = getUrl(queryStrings);
 
     fetch(url)
         .then(res => res.json())
