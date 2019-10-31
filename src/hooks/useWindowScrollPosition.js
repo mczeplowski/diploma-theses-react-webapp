@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import debounce from 'debounce';
 
-function useWindowScrollPosition() {
+export default function useWindowScrollPosition() {
   const [position, setPosition] = useState(0);
 
   const set = debounce(() => setPosition(window.scrollY), 10);
@@ -13,5 +13,3 @@ function useWindowScrollPosition() {
 
   return [position];
 }
-
-export default useWindowScrollPosition;

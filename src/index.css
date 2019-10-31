@@ -8,6 +8,10 @@ body {
   padding-top: 5rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .flex {
   display: flex;
 }
