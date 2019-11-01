@@ -6,7 +6,7 @@ export default function ThesePageComponent({ id }) {
     const [these, isLoading] = useThese(id);
 
     if (isLoading) {
-        return <h1>Loading</h1>;
+        return null;
     }
 
     const { name, surname, defenseDate, promoter, reviewer, topic, field, specialty, studies } = these;
